@@ -20,5 +20,11 @@ class usermodel(models.Model):
 class cartmodel(models.Model):
     productid=models.CharField(max_length=40)
     userid=models.CharField(max_length=40)
-    
+    count=models.IntegerField()
+
+
+class favmodel(models.Model):
+    productid=models.CharField(max_length=40)
+    userid=models.CharField(max_length=40)
+    isfav=models.CharField(max_length=5)
     

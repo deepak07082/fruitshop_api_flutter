@@ -10,9 +10,12 @@ urlpatterns = [
     path('img/',views.imgsnd,name='imgsnd' ),
     path('fruits/<int:id>/', views.fetchfruit ,name='spcificfruits'),
     path('users/',views.adduser,name='usercrud' ),
+    path('login/',views.login,name='logincrud' ),
     path('cart/',views.addcart,name='addcart' ),
     path('fetchcart/',views.fetchcart,name='getcart' ),
     path('deletecart/',views.deletecart,name='deletecart' ),
+    path('addfav/',views.addfav,name='addfav' ),
+
 ]
 
 
