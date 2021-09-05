@@ -55,10 +55,7 @@ def addcart(request):
         serializer=cartSerializer(queryset,many=True)
         return JsonResponse({"response": {"data": serializer.data,"error":'null'}}, safe=False)
     elif request.method == 'POST':
-
         data = JSONParser().parse(request)
-        queryset=cartmodel.objects.filter(userid=data['productid'])
-        if len(queryset)==0:
         serializer = cartSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
@@ -71,7 +68,7 @@ def fetchcart(request):
     if request.method == 'POST':
         data = JSONParser().parse(request)
         try:
-            queryset=cartmodel.objects.all()
+            queryset=cartmodel.objects.filter(userid=data['userid'])
             serializer=cartSerializer(queryset,many=True)
             if len(serializer.data)==0:
                 return JsonResponse({"response": {"data": 'null',"error":'no_items_found'}}, status=400)
